@@ -51,3 +51,4 @@ zemljevid_kolicina_alkohola_mlade <- ggplot() + geom_polygon(data=left_join(zeml
                                            aes(x=long, y=lat, group=group, fill=Total), size=0.1) +
   labs(x="", y="", fill="Total alcohol per young person") + ggtitle("Drzave glede na uporebene litre alkohola od mladi ljudi")
 #not working: zemljevid_kolicina_alkohola_mlade + coord_cartesian(xlim=c(-100, 50), ylim=c(0, 100), expand = TRUE)                                                                                    
+

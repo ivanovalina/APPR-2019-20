@@ -11,8 +11,9 @@ uvozi.kolicina_pc <- function() {
   link <- "https://en.wikipedia.org/wiki/List_of_countries_by_alcohol_consumption_per_capita"
   page <- html_session(link) %>% read_html()
   table <- page %>% html_nodes(xpath="//table[@class='wikitable nowrap sortable mw-datatable']") %>% .[[1]] %>%
-    html_table(dec=",")
+    html_table(dec=".")
   
+
   #for (i in 1:ncol(table())) {
    # if (is.character(table[[i]])) {
    #   Encoding(table[[i]]) <- "UTF-8"
@@ -26,11 +27,11 @@ uvozi.kolicina_pc <- function() {
   table$`Recorded consumption` <- NULL
   table$`Unrecorded consumption`<- NULL
   
-  for (col in c("Beer", "Wine", "Spirits", "Other", "Total alcohol")) {
-    if (is.character(table[[col]])) {
-      table[[col]] <- parse_number(table[[col]], na=c("0", "0.0", ""))
-    }
-  }
+  # for (col in c("Beer", "Wine", "Spirits", "Other", "Total alcohol")) {
+  #   if (is.character(table[[col]])) {
+  #     table[[col]] <- parse_number(table[[col]], na=c("0", "0.0", ""))
+  #   }
+  # }
   return(table)
 }
 kolicina_pc <- uvozi.kolicina_pc()
