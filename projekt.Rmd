@@ -35,7 +35,7 @@ V projektu bom prikazala katere drzave proizvedejo/uvezijo/izvozijo največ alko
 
 # Obdelava, uvoz in čiščenje podatkov
 
-```{r uvoz, echo=FALSE, message=FALSE}
+```{r uvoz, echo=FALSE, message=FALSE, warning=FALSE}
 source("uvoz/uvoz.r", encoding="UTF-8")
 ```
 
@@ -75,7 +75,7 @@ Podatke imamo v štirih razpredelnicah v obliki *tidy data*.
   - `Production` - meritev: število proizveden alkohol (numeric).
   
   
-#**Opomba**: da bi razpredelnica `obcine` res bila v obliki *tidy data*, bi morali odstraniti stolpec `gostota` (saj je izpeljan iz stolpcev `povrsina` in `prebivalci`), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem `odcepitev`.
+**Opomba**: da bi razpredelnica obcine res bila v obliki *tidy data*, bi morali odstraniti stolpec gostota (saj je izpeljan iz stolpcev povrsina in prebivalci), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem odcepitev.
 
 ***
 
@@ -87,45 +87,27 @@ source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 
 Spodnji graf
 
-```{r graf_cene, echo=FALSE, fig.align='center', fig.cap='Graf 1'}
+```{r graf_cene, echo=FALSE, fig.align='center', warning=FALSE, fig.cap='Graf 1'}
 graf_cene
 ```
 Spodnji graf
-```{r graf_proizvodnja, echo=FALSE, fig.align='center', fig.cap='Graf 2'}
+```{r graf_proizvodnja, echo=FALSE, warning=FALSE, fig.align='center', fig.cap='Graf 2'}
 graf_proizvodnja
 ```
 
 Spodnji zemljevid
 
-```{r zemljevid_kolicina_alkohola, echo=FALSE, fig.align='center', fig.cap='Zemljevid 1'}
+```{r zemljevid_kolicina_alkohola, echo=FALSE, warning=FALSE, fig.align='center', fig.cap='Zemljevid 1'}
 zemljevid_kolicina_alkohola
 ```
 
-```{r zemljevid_kolicina_alkohola_mlade, echo=FALSE, fig.align='center', fig.cap='Zemljevid 2'}
+```{r zemljevid_kolicina_alkohola_mlade, warning=FALSE, echo=FALSE, fig.align='center', fig.cap='Zemljevid 2'}
 zemljevid_kolicina_alkohola_mlade
 ```
 ***
 
 # Napredna analiza podatkov
 
-```{r analiza, echo=FALSE, message=FALSE}
-source("analiza/analiza.r", encoding="UTF-8")
-```
-
-Spodnji graf prikazuje povezavo med številom naselij in površino občine.
-
-```{r graf, echo=FALSE, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
-ggplot(inner_join(obcine, data.frame(obcina=names(skupine),
-                                     skupina=factor(skupine)), by="obcina")
-, aes(x=povrsina, y=naselja, color=skupina, size=prebivalci/1000)) + geom_point() +
-  ggtitle("Število naselij glede na površino občine") +
-  xlab(expression("Površina (km"^2 * ")")) + ylab("Št. naselij") +
-  guides(color=guide_legend(title="Skupina"),
-         size=guide_legend(title="Prebivalci (* 1000)"))
-```
 
 ***
 
-```{r shiny, echo=FALSE}
-shinyAppDir("shiny", options=list(width="100%", height=600))
-```

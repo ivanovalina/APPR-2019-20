@@ -88,8 +88,8 @@ uvoz_kolicina_sex_age <- function(){
   consumption <- read_csv("podatki/consumption_sex&age.csv", col_names = col, locale=locale(encoding = "cp1250"), 
                           skip=1, na=c(":", ""," ", "-")) %>% select(-"Unit", -"Comment", -"Year", -"Degree of urbanisation")
 
-  #not working: consumption %>% gsub("European Union - 28 countries", "EU", 
-                              #gsub("^Germany.*", "Germany", consumption$Country)))
+   consumption$Country <- gsub("European Union - 28 countries", "EU",consumption$Country,) 
+   gsub("^Germany.*", "Germany", consumption$Country)
   
   consumption <- consumption[c(2, 4, 1, 3, 5)] %>% spread(Age, Value)
   

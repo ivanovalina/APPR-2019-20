@@ -4,6 +4,8 @@ library(gsubfn)
 library(tidyr)
 library(tmap)
 library(shiny)
+library(scales)
+
 
 options(gsubfn.engine="R")
 
