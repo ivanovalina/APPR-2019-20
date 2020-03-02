@@ -80,6 +80,18 @@ uvoz_proizvodnja <- function(){
 }
 production <- uvoz_proizvodnja()
 
+#Tabela 'production' rascepimo na tri pounchinkovite tabele
+table_exports <- production %>% select(-"Imports", -"Production") %>% spread(`Type of alcohol`, Exports)
+names(table_exports) = c("Country", "Year", "Beer", "Gin", "Rum", "Vodka", "Whisky" )
+table_imports <- production %>% select(-"Exports", -"Production") %>% spread(`Type of alcohol`, Imports)
+names(table_imports) = c("Country", "Year", "Beer", "Gin", "Rum", "Vodka", "Whisky" )
+table_production <- production %>% select(-"Imports", -"Exports") %>% spread(`Type of alcohol`, Production)
+names(table_production) = c("Country", "Year", "Beer", "Gin", "Rum", "Vodka", "Whisky" )
+
+#row_f <- table_exports %>% filter(Year %in% c(2008:2012), Country == "Finland") %>% select(-Country) 
+
+#table_bf <- data.frame(Year = c(2008:2012)) %>% right_join(row_f)
+
 # Funkcija, ki uvozi podatke iz datoteke consumption_sex&age.csv
 uvoz_kolicina_sex_age <- function(){
   col = c("Frequency", "Country", "Year", "Degree of urbanisation", 
@@ -89,13 +101,15 @@ uvoz_kolicina_sex_age <- function(){
                           skip=1, na=c(":", ""," ", "-")) %>% select(-"Unit", -"Comment", -"Year", -"Degree of urbanisation")
 
    consumption$Country <- gsub("European Union - 28 countries", "EU",consumption$Country,) 
-   gsub("^Germany.*", "Germany", consumption$Country)
+   consumption$Country <- gsub("^Germany.*", "Germany", consumption$Country)
   
   consumption <- consumption[c(2, 4, 1, 3, 5)] %>% spread(Age, Value)
   
   return(consumption)
 }
 kolicina <- uvoz_kolicina_sex_age()
+
+
 
 uvoz_gdp_per_capita <- function(){
   gdp_per_capita <- read_csv2("podatki/gdp_per_capita.csv", col_names=c("Country", "Year", "Value"), skip=1, na=c(":", "", " ", "-"))

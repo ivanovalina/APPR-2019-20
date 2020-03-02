@@ -5,7 +5,9 @@ library(tidyr)
 library(tmap)
 library(shiny)
 library(scales)
-
+library(ggplot2)
+library(GGally)
+library(mgcv)
 
 options(gsubfn.engine="R")
 
