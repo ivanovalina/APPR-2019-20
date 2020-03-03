@@ -32,6 +32,7 @@ graf_proizvodnja <- ggplot(data=production, aes(x=Year, y=Production, fill=`Type
   scale_fill_manual(labels = c("Pivo", "Gin", "Rum", "Vodka", "Viski"), values= mycolours, breaks=vrednosti) +
   theme(axis.text.x = element_text(angle = 90, size = 8), legend.text = element_text(size=8), 
         legend.position = "bottom",  plot.title = element_text(size = 20)) +
+  labs(fill="Tip alkohol") +
   coord_flip()
 
 

@@ -44,11 +44,17 @@ graf_slovenija <- ggplot(data=podatki_slovenija, mapping=aes(x=Years, y = get("V
 
 #Data frames
 t_bulgaria1 <- table_production %>% filter(Country == "Bulgaria", Year %in% c(2008:2013)) %>% select(Country, Year, Beer)
+t_bulgaria1$Beer <- t_bulgaria1$Beer / 10000
 t_bulgaria2 <- table_production %>% filter(Country == "Bulgaria", Year %in% c(2008:2013)) %>% select(Country, Year, Whisky)
+t_bulgaria2$Whisky <- t_bulgaria2$Whisky / 10000
 t_finland1 <- table_production %>% filter(Country == "Finland", Year %in% c(2008:2013)) %>% select(Country, Year, Beer)
-t_finland2 <- table_production %>% filter(Country == "Finland", Year %in% c(2008:2013)) %>% select(Country, Year, Whisky)
+t_finland1$Beer <- t_finland1$Beer / 10000
+t_finland2 <- table_production %>% filter(Country == "Finland", Year %in% c(2008:2013)) %>% select(Country, Year, Whisky )
+t_finland2$Whisky <- t_finland2$Whisky / 10000
 t_lithuania1 <- table_production %>% filter(Country == "Lithuania", Year %in% c(2008:2013)) %>% select(Country, Year, Beer)
+t_lithuania1$Beer <- t_lithuania1$Beer / 10000
 t_lithuania2 <- table_production %>% filter(Country == "Lithuania", Year %in% c(2008:2013)) %>% select(Country, Year, Whisky)
+t_lithuania2$Whisky <- t_lithuania2$Whisky / 10000
 
 t_all1 <- bind_rows(t_bulgaria1, t_finland1, t_lithuania1)
 t_all2 <- bind_rows(t_bulgaria2, t_finland2, t_lithuania2)
@@ -56,10 +62,11 @@ t_all2 <- bind_rows(t_bulgaria2, t_finland2, t_lithuania2)
 test_future1 <- table_production %>% 
   filter(Country %in% c("Bulgaria", "Finland", "Lithuania"), Year %in% c(2014:2018)) %>% 
   select(Country, Year, Beer)
+test_future1$Beer <- test_future1$Beer / 10000
 test_future2 <- table_production %>% 
   filter(Country %in% c("Bulgaria", "Finland", "Lithuania"), Year %in% c(2014:2018)) %>% 
   select(Country, Year, Whisky)
-
+test_future2$Whisky <- test_future2$Whisky / 10000
 #Models
 p_bulgaria1 <- lm(data= t_bulgaria1, Beer ~ Year)
 p_bulgaria2 <- lm(data= t_bulgaria2, Whisky ~ Year)
@@ -87,7 +94,7 @@ graf_regresija_pivo <- ggplot() +
   geom_point(data = t_all1, mapping = aes(x=Year, y=Beer), color = "black") +
   geom_point(data = test_future1, mapping = aes(x=Year, y=Beer), color = "orangered2") +
   geom_smooth(data = napoved1 , mapping = aes(x=Year, y=Beer), method=lm, color="steelblue3") +
-  labs(x="Leto", y="Litrov proizvedena piva") +
+  labs(x="Leto", y="Kolicina poizvedenaga piva") +
   ggtitle("Napoved provizvodnja piva") +
   facet_wrap(.~Country, nrow=3, scales="free") +
   theme(axis.text.x = element_text(angle = 90, size = 8)) +
@@ -98,7 +105,7 @@ graf_regresija_viski <- ggplot() +
   geom_point(data = t_all2, mapping = aes(x=Year, y=Whisky), color = "black") +
   geom_point(data = test_future2, mapping = aes(x=Year, y=Whisky), color = "orangered2") +
   geom_smooth(data = napoved2 , mapping = aes(x=Year, y=Whisky), method=lm, color="steelblue3") +
-  labs(x="Leto", y="Litrov proizveden viski") +
+  labs(x="Leto", y="Kolicina poizvedenaga viskija") +
   ggtitle("Napoved provizvodnja viskija") +
   facet_wrap(.~Country, nrow=3, scales="free") +
   theme(axis.text.x = element_text(angle = 90, size = 8)) +

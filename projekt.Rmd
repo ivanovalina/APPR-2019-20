@@ -7,7 +7,6 @@ output:
     includes:
       in_header: lib/styles.sty
     latex_engine: xelatex
-runtime: shiny
 ---
 
 ```{r setup, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
@@ -124,7 +123,7 @@ Nasljedna stvar, katera sem hotela prikazati, je konzumacije pijače v Evropi, s
 zemljevid_kolicina_alkohola_mlade
 ```
 
-Torej v sliki se vidi da Norveška, Iceland in Litva imajo največi procent na mladih ljudi ki pijejo vsaki mesec. Pomembno je to da se podatki nanašajo na mesečna konzumacija. Portugalska in Združeno Kraljevstvo so najtemno obarvane, kar pomeni da tem mladih ne pijejo alkohol veliko. 
+Torej v sliki se vidi da Norveška, Iceland in Litva imajo največi procent na mladih ljudi ki pijejo vsaki mesec. Pomembno je to da se podatki nanašajo na mesečna konzumacija. Portugalska in Združeno Kraljevstvo so najtemno obarvane, kar pomeni da tem mladih ne pijejo alkohol veliko.   
 ***
 
 # Napredna analiza podatkov
