@@ -47,7 +47,8 @@ zemljevid_kolicina_alkohola <- ggplot() +
   geom_polygon(data=left_join(zemljevid, kolicina_pc %>% group_by(Countries) %>% summarise(`Total alcohol`), by=c("SOVEREIGNT"="Countries")), 
                aes(x=long, y=lat, group=group, fill=`Total alcohol`), size=0.1) +
   labs(x="", y="", fill="Litrov alkohola na prebivalca", title = "Konzumacija alkohola") + 
-  theme_map(base_size = 20)
+  theme_map(base_size = 20) +
+  theme(legend.position = "bottom")
   
 
 #Zemljevid: kolicina spirits, pivo, vino per capita

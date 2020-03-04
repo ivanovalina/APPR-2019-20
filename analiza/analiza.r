@@ -67,6 +67,7 @@ test_future2 <- table_production %>%
   filter(Country %in% c("Bulgaria", "Finland", "Lithuania"), Year %in% c(2014:2018)) %>% 
   select(Country, Year, Whisky)
 test_future2$Whisky <- test_future2$Whisky / 10000
+
 #Models
 p_bulgaria1 <- lm(data= t_bulgaria1, Beer ~ Year)
 p_bulgaria2 <- lm(data= t_bulgaria2, Whisky ~ Year)
