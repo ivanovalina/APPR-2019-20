@@ -25,7 +25,7 @@ source("lib/rstudio.r", encoding="UTF-8")
 
 # Izbira teme
 
-Za temo sem izbrala **alkoholno industrijo**. Nisem se omejila na posebnem geografskem področju. Večina podatkov je za evropske države, ker jih je enostavno dobiti. 
+Za temo sem izbrala **alkoholno industrijo**. Nisem se omejila na posebnem geografskem področju. Ampak večina podatkov je za evropske države, ker jih je enostavno dobiti. 
 
 Ta projekt bo vključeval analizo te panoge iz več vidikov.
 Prikazala bom proizvodnjo alkohola in količino uvoza oz. izvoza za posamezno državo. Vklučila bom podatke povezane z ceno alkohola. Želim prikazati ali so cene odvisne od življenskega standarda v dani državi. Zaradi tega bom vključila še eno ekonomsko spremenljivko: BDP. Našla sem tudi podatke o količinah proizvedenega alkohola po kategorijah vrsti pijač: pivo, gin, vodka, rum, whisky. Sem ogledala tudi podatke o konzumaciji alkohola. Tukaj bom ugotovila katera država konzumira največ (najmanj) alkohola. Ta analiza bo vsebovala podatke po spolu, starosti in frekfenci konzumacije. Vse te podatke bom prikazala na različnih načinih skozi različne dimenzije. Potem se bom osredotočila na porabljeno količino alkohola prebivalca. Vir teh podatkov bo html tabela iz Wikipedije, katera vsebuje skoraj vse države. Na koncu pa bom naredila še eno analizo ki se bo nanašala na prihodnost. Torej bom napovedala prihodnjo proizvodnjo alkohola.  
@@ -161,3 +161,7 @@ graf_regresija_viski
 ```
 
 ***
+
+# Zaključek
+
+Od vse od podatke sem zaključila da ponavadi napačno sklepamo stvari v zvezi s to industrijo. Videli smo da cene niso odvisne od zivljenskega standarda in da so manj stabilne v bolj razvite države. Tudi sem ugotovila da severne države imajo večjo konzumacijo od ostale, ki je na nek način nenavadno. Podatki o koznumacija po spol prikazujejo, da konzumacija moške in ženske se zelo razlikuje. Sam manj državah imajo skoraj isto konzumacijo po spola. V splošnem evropske države so tisti z največo število litrov alkohola na prebivalca. Nasproti pa so afriške države ki imajo največi procent konzumacije piva. Zelo nepričekovane so bili podatki o konzumacije v Evropi, s strani mladih. Tem sem ugotovila da v južne države mladih ljudi ne pijejo veliko ki je spet nenavadno. Glede na vse, analizo te panoge pretstavlja široko polje sestavljeno iz različne spremenljivke.   
