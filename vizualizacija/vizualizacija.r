@@ -78,7 +78,7 @@ alcohol_young_people <- kolicina %>% filter(Sex=="Total") %>% filter(Frequency==
 zemljevid_kolicina_alkohola_mlade <- ggplot() + 
   geom_polygon(data=left_join(zemljevid %>% filter(CONTINENT=="Europe"), alcohol_young_people, by=c("SOVEREIGNT"="Country")),
                aes(x=long, y=lat, group=group, fill=Total), size=0.1) +
-  labs(x="", y="", fill="Kolicina alkohola na osebo med 15 in 24 let") +   
+  labs(x="", y="", fill="Kolicina alkohola\n na osebo (15-24) let") +   
   ggtitle("Konzumacija alkohola v Evropi s strani mladih (15-24 let)") +
   coord_cartesian(xlim=c(-27, 50), ylim=c(25, 80), expand = TRUE)  +
   theme_map(base_size = 20)
