@@ -17,7 +17,7 @@ graf_spol <- ggplot(data=podatki, aes(x=Country, y=`From 25 to 64 years`)) +
   scale_fill_manual(values=c("steelblue3", "orangered2"), labels = c("Ženske", "Moški")) +
   theme_minimal() +
   labs(x="Država", y="Kolicina alkohola v procentih",
-       title="Analiza kolicina alkohola po spolu v izbranih državah za ljudi 25-64 let",
+       title="Analiza kolicina alkohola po spolu\nv izbranih državah za ljudi 25-64 let",
        fill = "Spol") +
   theme(legend.position = "bottom") +
   theme(axis.text.x = element_text(angle = 90, size = 8),  plot.title = element_text(size = 20))

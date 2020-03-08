@@ -16,7 +16,7 @@ graf_cene <- ggplot(mapping = aes(x=Year, y=Value, colour=Country)) +
   theme(axis.text.x = element_text(angle = 90, size = 8), plot.title = element_text(size = 20)) +
   geom_line(linetype="solid", data=countries) +
   geom_line(linetype="dashed", data=gdp_per_capita, show.legend = TRUE) + 
-  labs(x="Leto", y="Cen in BDP - indeksi cen (referenca EU28=100)", title="Sprememba cen in BDP prebivalca po letih 2008-2018 capita", colour="Države") +
+  labs(x="Leto", y="Cen in BDP - indeksi cen (referenca EU28=100)", title="Sprememba cen in BDP prebivalca\npo letih 2008-2018 capita", colour="Države") +
   scale_x_discrete(limits=c(2008:2018))+
   scale_colour_manual(values = mycolours)
 
@@ -78,7 +78,7 @@ alcohol_young_people <- kolicina %>% filter(Sex=="Total") %>% filter(Frequency==
 zemljevid_kolicina_alkohola_mlade <- ggplot() + 
   geom_polygon(data=left_join(zemljevid %>% filter(CONTINENT=="Europe"), alcohol_young_people, by=c("SOVEREIGNT"="Country")),
                aes(x=long, y=lat, group=group, fill=Total), size=0.1) +
-  labs(x="", y="", fill="Kolicina alkohola\n na osebo (15-24) let") +   
+  labs(x="", y="", fill="Kolicina alkohola\nna osebo (15-24) let") +   
   ggtitle("Konzumacija alkohola v Evropi s strani mladih (15-24 let)") +
   coord_cartesian(xlim=c(-27, 50), ylim=c(25, 80), expand = TRUE)  +
   theme_map(base_size = 20)
