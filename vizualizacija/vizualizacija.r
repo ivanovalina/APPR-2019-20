@@ -66,7 +66,7 @@ zemljevid_kolicina <- ggplot() +
                aes(x=long, y=lat, group=group, fill=`Wine(%)`), size=0.1) +
   geom_polygon(data=s3, 
                aes(x=long, y=lat, group=group, fill=`Beer(%)`), size=0.1) +
-  facet_grid(type~., labeller = as_labeller(c("Beer"="Pivo", "Spirits" = "Spiriti", "Wine"="Vino"))) +
+  facet_grid(type~., labeller = as_labeller(c("Beer"="Pivo", "Spirits" = "Zganje", "Wine"="Vino"))) +
   labs(x="", y="", fill="Litrov na prebivalca") + 
   ggtitle("Konzumacija različnih pijačah na prebivalca") +
   theme_map(base_size = 20)
@@ -78,7 +78,7 @@ alcohol_young_people <- kolicina %>% filter(Sex=="Total") %>% filter(Frequency==
 zemljevid_kolicina_alkohola_mlade <- ggplot() + 
   geom_polygon(data=left_join(zemljevid %>% filter(CONTINENT=="Europe"), alcohol_young_people, by=c("SOVEREIGNT"="Country")),
                aes(x=long, y=lat, group=group, fill=Total), size=0.1) +
-  labs(x="", y="", fill="Total alcohol per young person") +   
+  labs(x="", y="", fill="Kolicina alkohola\n na osebo (15-24) let") +   
   ggtitle("Konzumacija alkohola v Evropi s strani mladih (15-24 let)") +
   coord_cartesian(xlim=c(-27, 50), ylim=c(25, 80), expand = TRUE)  +
   theme_map(base_size = 20)
